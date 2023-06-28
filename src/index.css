@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    margin: 20px;
+    background-color: rgb(154, 230, 255);
+}
+.btn {
+    @apply font-bold py-2 px-4 rounded;
+  }
+  .btn-blue {
+    @apply bg-blue-500 text-white;
+  }
+  .btn-blue:hover {
+    @apply bg-blue-700;
+  }

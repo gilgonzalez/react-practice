@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 :root{
-    margin: 20px;
-    background-color: rgb(154, 230, 255);
+    background-color: rgba(255, 217, 0, 0.255);
 }
 .btn {
     @apply font-bold py-2 px-4 rounded;
@@ -15,3 +14,7 @@
   .btn-blue:hover {
     @apply bg-blue-700;
   }
+.page {
+  padding: 20px;
+  margin-top: 70px;
+}

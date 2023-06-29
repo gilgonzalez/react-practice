@@ -14,7 +14,7 @@ const GifList = ({ category }: { category: string }) => {
           <h3 className="font-bold mt-5">{category}</h3>
           <div className="list mt-2">
             {gifs?.map((gif) => (
-              <GifCard gif={gif} />
+              <GifCard gif={gif} key={gif.id} />
             ))}
           </div>
         </>

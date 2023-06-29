@@ -1,7 +1,21 @@
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { AuthActionType } from "../../context/authReducer";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+  const { dispatch } = useContext(AuthContext);
+  const onLogin = (name: string) => {
+    if (userName.length < 3) {
+      alert("El nombre de usuario debe tener al menos 3 caracteres");
+      return;
+    }
+    dispatch({ type: AuthActionType.LOGIN, payload: name });
+    localStorage.setItem("user", JSON.stringify(name));
+    navigate("/Marvel-Comics");
+  };
   return (
     <section>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -21,9 +35,11 @@ const LoginPage = () => {
                 <input
                   type="email"
                   name="email"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
                   id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
+                  placeholder="Aqui va el email"
                   //required
                 />
               </div>
@@ -38,14 +54,14 @@ const LoginPage = () => {
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="••••••••"
+                  placeholder="Aqui va la contraseña"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   //required
                 />
               </div>
               <button
                 type="button"
-                onClick={() => navigate("/marvel")}
+                onClick={() => onLogin(userName)}
                 className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Sign in

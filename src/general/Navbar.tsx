@@ -1,8 +1,17 @@
+import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { AuthActionType } from "../context/authReducer";
 
 export const Navbar = () => {
   const navigate = useNavigate();
+  const {
+    state: { user, logged },
+    dispatch,
+  } = useContext(AuthContext);
   const onLogout = () => {
+    dispatch({ type: AuthActionType.LOGOUT });
+    localStorage.removeItem("user");
     navigate("/login", { replace: true });
   };
   return (
@@ -41,16 +50,18 @@ export const Navbar = () => {
           </NavLink>
         </div>
         <div>
-          <h3 className="text-gray-800 dark:text-gray-200">
-            FRANCISCO JAVIER GIL{" "}
+          <h3 className="text-gray-800 dark:text-gray-200 capitalize">
+            {user}
           </h3>
         </div>
         <div>
           <button
             onClick={onLogout}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            className={`${
+              logged ? "bg-red-600" : "bg-sky-800"
+            } text-white px-4 py-2 rounded-md`}
           >
-            Login
+            {logged ? "Logout" : "Login"}
           </button>
         </div>
       </div>

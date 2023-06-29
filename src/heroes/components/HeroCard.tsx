@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Hero } from "../data/heroes";
 
 const HeroCard = ({ hero }: { hero: Hero }) => {
-  console.log(hero);
   return (
     <div className="group bg-slate-700 p-4  transition duration-500 rounded-t-lg hover:bg-slate-100">
       <h2 className="text-xl transition group-hover:text-black duration-500  text-white text-center mb-4">

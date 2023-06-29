@@ -1,3 +1,4 @@
+import "animate.css";
 import { useMemo } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { getHeroById } from "../helpers/getHeroById";
@@ -13,7 +14,7 @@ const HeroPage = () => {
     <div className="page flex justify-center">
       <div className="rounded-xl w-64 h-96 flex-column  bg-black  content-center justify-center ">
         <img
-          className="rounded-xl w-64 h-80 "
+          className="rounded-xl w-64 h-80 animate__animated animate__fadeInLeft"
           src={`../../../assets/heroes/${hero.id}.jpg`}
           alt=""
         />

@@ -15,7 +15,7 @@ const HeroesRoutes = () => {
         <Route path="/hero/:id" element={<HeroPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/gifs/*" element={<GifApp />} />
-        <Route path="/" element={<Navigate to="/comic/DC-Comics" />} />
+        <Route path="/" element={<Navigate to="/DC-Comics" />} />
       </Routes>
     </>
   );
